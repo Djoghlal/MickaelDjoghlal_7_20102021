@@ -11,26 +11,32 @@
                   <div class="form-group">
                       <label for="connect-password">Mot de passe</label>
                       <div class="input-bloc">
-                      <input :type="passwordFieldType" v-model="password" />
-                      <img @click="switchVisibility" class="icon-password" src="../assets/Images/logo/hidePassword.png" alt="Password-View" />
+                        <input v-bind:type="passType" />
+                        <i v-if="EyeClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
+                        <i v-if="EyeOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
                       </div>
                   </div>
                   
                   <input type="button" value="Se connecter" class="btn-global" />
+                  <span class="forgotPassword">
+                    <i class="fas fa-key"></i>
+                    <a href="#">J'ai oublié mon mot de passe</a>
+                    
+                  </span>
 
                   <div class="social">
                       <a href="#" class="btn-social btn-github">
-                      <img class="icon" alt="Github" src="../assets/Images/logo/github.png" /> 
+                      <i class="fab fa-github icon"></i> 
                       Se connecter avec Github
                       </a>
 
                       <a href="#" class="btn-social btn-google">
-                      <img class="icon" alt="Google" src="../assets/Images/logo/google.png" /> 
+                      <i class="fab fa-google icon"></i>
                       Se connecter avec Google
                       </a>
 
                       <a href="#" class="btn-social btn-facebook">
-                      <img class="icon" alt="Facebook" src="../assets/Images/logo/facebook.png" /> 
+                      <i class="fab fa-facebook-square icon"></i>
                       Se connecter avec Facebook
                       </a>
                   </div>
@@ -45,20 +51,28 @@
         name: 'Login',
         data() {
             return {
-            password: "",
-            passwordFieldType: "password"
-            };
+              passType: 'password',
+              EyeClose: true,
+              EyeOpen: false
+            }
         },
         methods: {
-            switchVisibility() {
-            this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
-            }
+          viewPassword: function() {
+            this.passType = 'text',
+            this.EyeClose = false,
+            this.EyeOpen = true
+          },
+          hidePassword: function() {
+            this.passType = 'password',
+            this.EyeClose = true,
+            this.EyeOpen = false
+          } 
         }
     }
 </script>
 
 <style>
-    .auth-container {
+  .auth-container {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -121,8 +135,11 @@
   }
 
   .icon-password {
-    width: 30px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .btn-global {
@@ -137,6 +154,21 @@
   .btn-global:hover {
     background-color: #e7defa;
     cursor: pointer;
+  }
+
+  .forgotPassword {
+    float: right;
+  }
+
+  .forgotPassword a {
+    color: #7326BD;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+
+  .forgotPassword i {
+    color: #7326BD;
+    margin-right: 10px;
   }
 
   .social {

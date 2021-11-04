@@ -1,6 +1,6 @@
 <template>
     <main>
-        <video poster="../assets/bg-default.png" id="bgDefault" playsinline autoplay muted loop>
+        <video poster="../assets/Images/bg-default.png" id="bgDefault" playsinline autoplay muted loop>
         <source src="../assets/movies/background-default.mp4" type="video/mp4">
         </video>
     </main>
@@ -23,7 +23,7 @@
         height: auto;
         z-index: -100;
         transform: translateX(-50%) translateY(-50%);
-        background: url('../assets/bg-default.png') no-repeat;
+        background: url('../assets/Images/bg-default.png') no-repeat;
         background-size: cover;
         opacity: 0.35;
     }

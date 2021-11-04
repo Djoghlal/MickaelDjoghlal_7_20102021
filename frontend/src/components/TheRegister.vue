@@ -1,7 +1,7 @@
 <template>
     <div class="auth-container">
         <div class="register-group">
-        <h1>Enregistrement de compte</h1>
+        <h1>Création compte</h1>
             <div class="register-member">
                 <form>
                   <div class="form-group">
@@ -11,15 +11,15 @@
                   <div class="form-group">
                       <label for="register-password">Mot de passe</label>
                       <div class="input-bloc">
-                      <input :type="passwordFieldType" v-model="password" />
-                      <img @click="switchPassword" class="icon-password" src="../assets/Images/logo/hidePassword.png" alt="Password-View" />
+                        <input v-bind:type="passType" />
+                        <i v-if="EyePasswordClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
+                        <i v-if="EyePasswordOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="register-confirm">Confirmation Mot de passe</label>
                       <div class="input-bloc">
-                      <input :type="confirmPasswordFieldType" v-model="confirmPassword" />
-                      <img @click="switchConfirm" class="icon-password" src="../assets/Images/logo/hidePassword.png" alt="Confirm-View" />
+                        <input type="password" />
                       </div>
                   </div>
                   
@@ -35,25 +35,23 @@
         name: 'Login',
         data() {
             return {
-            password: "",
-            confirmPassword: "",
-            passwordFieldType: "password",
-            confirmPasswordFieldType: "password"
-            };
+              passType: 'password',
+              confirmType: 'password',
+              EyePasswordClose: true,
+              EyePasswordOpen: false
+            }
         },
         methods: {
-            switchPassword() {
-            this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
-            },
-            switchConfirm() {
-            this.confirmPasswordFieldType = this.confirmPasswordFieldType === "password" ? "text" : "password";
-            }
-
-            //Si this.confirmPassWordFieldType est égale au type password, on return le type text
-            //Sinon, on return le type password
-            //Le 1er confirmPasswordFieldType remplace le return (prend la valeur du résultat de la condition)
-            //Nouvelle ligne !!!!!!!!
-            
+          viewPassword: function() {
+            this.passType = 'text',
+            this.EyePasswordClose = false,
+            this.EyePasswordOpen = true
+          },
+          hidePassword: function() {
+            this.passType = 'password',
+            this.EyePasswordClose = true,
+            this.EyePasswordOpen = false
+          }
         }
     }
 </script>
