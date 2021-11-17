@@ -1,19 +1,19 @@
 <template>
     <div>
-        <Header></Header>
+        <HeaderMain></HeaderMain>
         <Main></Main>
         <TheRegister></TheRegister>
     </div>
 </template>
 
 <script>
-    import Header from '../components/Header/Header.vue';
+    import HeaderMain from '../components/Header/HeaderMain.vue';
     import Main from '../components/TheMain.vue';
     import TheRegister from '../components/TheRegister.vue';
 
     export default {
         components: {
-            Header,
+            HeaderMain,
             Main,
             TheRegister
         }
