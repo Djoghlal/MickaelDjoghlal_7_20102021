@@ -1,21 +1,35 @@
 <template>
-    <div>
-        <HeaderMembers></HeaderMembers>
-        <Main></Main>
-        <MainMembers></MainMembers>
+    <HeaderMembers></HeaderMembers>
+    <div class="container-home">
+        <h1>Dernières publications</h1>
+        <add-publication></add-publication>
     </div>
 </template>
 
 <script>
     import HeaderMembers from '../components/Header/HeaderMembers.vue';
-    import Main from '../components/TheMain.vue';
-    import MainMembers from '../components/Member/MemberMain.vue';
+    import AddPublication from '../components/Members/AddPublication.vue';
 
     export default {
         components: {
             HeaderMembers,
-            Main,
-            MainMembers
+            AddPublication
         }
     }
 </script>
+
+<style>
+    .container-home {
+        width: 1080px;
+        margin: 0px auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        color: #F4EFFF;
+    }
+</style>
+

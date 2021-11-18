@@ -1,33 +1,33 @@
 <template>
-    <div class="auth-container">
-        <div class="register-group">
-        <h1>Création compte</h1>
-            <div class="register-member">
-                <form>
-                  <div class="form-group">
-                      <label for="register-email">Email</label>
-                      <div class="input-bloc"><input type="email" name="register-email"/></div>
-                  </div>
-                  <div class="form-group">
-                      <label for="register-password">Mot de passe</label>
-                      <div class="input-bloc">
-                        <input v-bind:type="passType" />
-                        <i v-if="EyePasswordClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
-                        <i v-if="EyePasswordOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <label for="register-confirm">Confirmation Mot de passe</label>
-                      <div class="input-bloc">
-                        <input type="password" />
-                      </div>
-                  </div>
-                  
-                  <input type="button" value="Création de mon compte" class="btn-global" />
-                </form>
-            </div>
+<div class="auth-container">
+  <div class="register-group">
+    <h1>Création compte</h1>
+    <div class="register-member">
+      <form>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <div class="input-bloc"><input type="email" name="register-email"/></div>
         </div>
+        <div class="form-group">
+          <label for="register-password">Mot de passe</label>
+          <div class="input-bloc">
+            <input v-bind:type="passType" />
+            <i v-if="EyePasswordClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
+            <i v-if="EyePasswordOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="register-confirm">Confirmation Mot de passe</label>
+          <div class="input-bloc">
+            <input type="password" />
+          </div>
+        </div>
+
+        <input type="button" value="Création de mon compte" class="btn-global" />
+      </form>
     </div>
+  </div>
+</div>
 </template>
 
 <script>
