@@ -1,24 +1,29 @@
 <template>
-    <HeaderMembers></HeaderMembers>
-    <div class="container-home">
-        <h1>Dernières publications</h1>
-        <add-publication></add-publication>
+    <div>
+        <HeaderMembers></HeaderMembers>
+        <div class="container-home">
+            <h1>Dernières publications</h1>
+            <AddPublication></AddPublication>
+            <PublicationList></PublicationList>
+        </div>
     </div>
 </template>
 
 <script>
-    import HeaderMembers from '../components/Header/HeaderMembers.vue';
-    import AddPublication from '../components/Members/AddPublication.vue';
+import HeaderMembers from '../components/Header/HeaderMembers.vue'
+import AddPublication from '../components/Members/AddPublication.vue'
+import PublicationList from '../components/Members/PublicationList.vue'
 
-    export default {
-        components: {
-            HeaderMembers,
-            AddPublication
-        }
-    }
+export default {
+  components: {
+    HeaderMembers,
+    AddPublication,
+    PublicationList
+  }
+}
 </script>
 
-<style>
+<style scoped>
     .container-home {
         width: 1080px;
         margin: 0px auto;
@@ -32,4 +37,3 @@
         color: #F4EFFF;
     }
 </style>
-

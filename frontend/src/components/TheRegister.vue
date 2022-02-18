@@ -31,29 +31,29 @@
 </template>
 
 <script>
-    export default {
-        name: 'Login',
-        data() {
-            return {
-              passType: 'password',
-              confirmType: 'password',
-              EyePasswordClose: true,
-              EyePasswordOpen: false
-            }
-        },
-        methods: {
-          viewPassword: function() {
-            this.passType = 'text',
-            this.EyePasswordClose = false,
-            this.EyePasswordOpen = true
-          },
-          hidePassword: function() {
-            this.passType = 'password',
-            this.EyePasswordClose = true,
-            this.EyePasswordOpen = false
-          }
-        }
+export default {
+  name: 'Login',
+  data () {
+    return {
+      passType: 'password',
+      confirmType: 'password',
+      EyePasswordClose: true,
+      EyePasswordOpen: false
     }
+  },
+  methods: {
+    viewPassword: function () {
+      this.passType = 'text',
+      this.EyePasswordClose = false,
+      this.EyePasswordOpen = true
+    },
+    hidePassword: function () {
+      this.passType = 'password',
+      this.EyePasswordClose = true,
+      this.EyePasswordOpen = false
+    }
+  }
+}
 </script>
 
 <style>

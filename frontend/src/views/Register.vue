@@ -6,13 +6,13 @@
 </template>
 
 <script>
-    import HeaderMain from '../components/Header/HeaderMain.vue';
-    import TheRegister from '../components/TheRegister.vue';
+import HeaderMain from '../components/Header/HeaderMain.vue'
+import TheRegister from '../components/TheRegister.vue'
 
-    export default {
-        components: {
-            HeaderMain,
-            TheRegister
-        }
-    }
+export default {
+  components: {
+    HeaderMain,
+    TheRegister
+  }
+}
 </script>

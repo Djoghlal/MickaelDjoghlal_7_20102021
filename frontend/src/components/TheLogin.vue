@@ -16,17 +16,17 @@
                         <i v-if="EyeOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
                       </div>
                   </div>
-                  
+
                   <input type="button" value="Se connecter" class="btn-global" />
                   <span class="forgotPassword">
                     <i class="fas fa-key"></i>
                     <a href="#">J'ai oublié mon mot de passe</a>
-                    
+
                   </span>
 
                   <div class="social">
                       <a href="#" class="btn-social btn-github">
-                      <i class="fab fa-github icon"></i> 
+                      <i class="fab fa-github icon"></i>
                       Se connecter avec Github
                       </a>
 
@@ -47,28 +47,28 @@
 </template>
 
 <script>
-    export default {
-        name: 'Login',
-        data() {
-            return {
-              passType: 'password',
-              EyeClose: true,
-              EyeOpen: false
-            }
-        },
-        methods: {
-          viewPassword: function() {
-            this.passType = 'text',
-            this.EyeClose = false,
-            this.EyeOpen = true
-          },
-          hidePassword: function() {
-            this.passType = 'password',
-            this.EyeClose = true,
-            this.EyeOpen = false
-          } 
-        }
+export default {
+  name: 'Login',
+  data () {
+    return {
+      passType: 'password',
+      EyeClose: true,
+      EyeOpen: false
     }
+  },
+  methods: {
+    viewPassword: function () {
+      this.passType = 'text',
+      this.EyeClose = false,
+      this.EyeOpen = true
+    },
+    hidePassword: function () {
+      this.passType = 'password',
+      this.EyeClose = true,
+      this.EyeOpen = false
+    }
+  }
+}
 </script>
 
 <style>

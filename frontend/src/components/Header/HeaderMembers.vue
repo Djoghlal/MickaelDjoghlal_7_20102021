@@ -17,9 +17,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'HeaderMain'
-  }
+export default {
+  name: 'HeaderMain'
+}
 </script>
 
 <style scoped src="./Header.css">
