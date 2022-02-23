@@ -1,23 +1,23 @@
 <template>
     <div>
-        <HeaderMembers></HeaderMembers>
+        <header-members></header-members>
         <div class="container-profil">
             <h1>Votre profil </h1>
-            <ShowProfil></ShowProfil>
+            <show-profil></show-profil>
         </div>
     </div>
 </template>
 
 <script>
-    import HeaderMembers from '../components/Header/HeaderMembers.vue';
-    import ShowProfil from '../components/Members/ShowProfil.vue';
+import HeaderMembers from '../components/Header/HeaderMembers.vue'
+import ShowProfil from '../components/Members/ShowProfil.vue'
 
-    export default {
-        components: {
-            HeaderMembers,
-            ShowProfil
-        }
-    }
+export default {
+  components: {
+    HeaderMembers,
+    ShowProfil
+  }
+}
 </script>
 
 <style scoped>
@@ -34,4 +34,3 @@
         color: #F4EFFF;
     }
 </style>
-

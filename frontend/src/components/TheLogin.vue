@@ -3,21 +3,22 @@
         <div class="connect-group">
         <h1>Identification</h1>
             <div class="connect-member">
-                <form>
+                <form ref="form" @submit.prevent="submitLogin">
                   <div class="form-group">
                       <label for="connect-email">Email</label>
-                      <div class="input-bloc"><input type="email" name="connect-email"/></div>
+                      <div class="input-bloc"><input v-model="user.email" type="email" name="connect-email"/></div>
                   </div>
                   <div class="form-group">
                       <label for="connect-password">Mot de passe</label>
                       <div class="input-bloc">
-                        <input v-bind:type="passType" />
+                        <input v-model="user.password" v-bind:type="passType" />
                         <i v-if="EyeClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
                         <i v-if="EyeOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
                       </div>
                   </div>
 
-                  <input type="button" value="Se connecter" class="btn-global" />
+                  <input type="submit" value="Se connecter" class="btn-global" />
+
                   <span class="forgotPassword">
                     <i class="fas fa-key"></i>
                     <a href="#">J'ai oublié mon mot de passe</a>
@@ -47,25 +48,46 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Login',
   data () {
     return {
       passType: 'password',
       EyeClose: true,
-      EyeOpen: false
+      EyeOpen: false,
+      user: {
+        email: undefined,
+        password: undefined
+      }
     }
   },
   methods: {
-    viewPassword: function () {
-      this.passType = 'text',
-      this.EyeClose = false,
-      this.EyeOpen = true
-    },
-    hidePassword: function () {
-      this.passType = 'password',
-      this.EyeClose = true,
-      this.EyeOpen = false
+    // viewPassword () {
+    //   this.passType = 'text',
+    //   this.EyeClose = false,
+    //   this.EyeOpen = true
+    // },
+    // hidePassword () {
+    //   this.passType = 'password',
+    //   this.EyeClose = true,
+    //   this.EyeOpen = false
+    // },
+
+    submitLogin () {
+      axios.post('http://localhost:3000/api/user/login', this.user)
+        .then((response) => {
+          if (response) {
+            console.log('Identifiants correct !!!')
+          }
+
+          //Et là, faire le nécessaire pour la sauvegarde du token et la redirection vers le home utilisateur.
+          
+        })
+
+        .catch(function (error) {
+          console.log(error.response)
+        })
     }
   }
 }
