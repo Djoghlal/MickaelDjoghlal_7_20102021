@@ -5,13 +5,15 @@
             <div class="connect-member">
                 <form ref="form" @submit.prevent="submitLogin">
                   <div class="form-group">
-                      <label for="connect-email">Email</label>
-                      <div class="input-bloc"><input v-model="user.email" type="email" name="connect-email"/></div>
+                      <label for="connect-email">Email <span class="red">*</span></label>
+                      <div class="input-bloc">
+                        <input v-model="user.email" type="email" name="connect-email" required="required"/>
+                      </div>
                   </div>
                   <div class="form-group">
-                      <label for="connect-password">Mot de passe</label>
+                      <label for="connect-password">Mot de passe <span class="red">*</span></label>
                       <div class="input-bloc">
-                        <input v-model="user.password" v-bind:type="passType" />
+                        <input v-model="user.password" v-bind:type="passType" required="required"/>
                         <i v-if="EyeClose" class="far fa-eye-slash icon-password" v-on:click="viewPassword"></i>
                         <i v-if="EyeOpen" class="far fa-eye icon-password" v-on:click="hidePassword"></i>
                       </div>
@@ -63,16 +65,16 @@ export default {
     }
   },
   methods: {
-    // viewPassword () {
-    //   this.passType = 'text',
-    //   this.EyeClose = false,
-    //   this.EyeOpen = true
-    // },
-    // hidePassword () {
-    //   this.passType = 'password',
-    //   this.EyeClose = true,
-    //   this.EyeOpen = false
-    // },
+    viewPassword () {
+      this.passType = 'text'
+      this.EyeClose = false
+      this.EyeOpen = true
+    },
+    hidePassword () {
+      this.passType = 'password'
+      this.EyeClose = true
+      this.EyeOpen = false
+    },
 
     submitLogin () {
       axios.post('http://localhost:3000/api/user/login', this.user)
@@ -80,9 +82,6 @@ export default {
           if (response) {
             console.log('Identifiants correct !!!')
           }
-
-          //Et là, faire le nécessaire pour la sauvegarde du token et la redirection vers le home utilisateur.
-          
         })
 
         .catch(function (error) {
@@ -94,6 +93,14 @@ export default {
 </script>
 
 <style>
+  .valide {
+    color: green;
+  }
+
+  .error, .red {
+    color: red;
+  }
+
   .auth-container {
     height: 100vh;
     display: flex;

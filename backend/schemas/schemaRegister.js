@@ -6,8 +6,8 @@ const schemaRegister = Joi.object ({
         .required(),
 
     password: Joi.string()
-        .max(70)
-        .min(5)
+        .max(64)
+        .min(6)
         // .pattern(new RegExp( Ici la Regex ))
         .required()
 })

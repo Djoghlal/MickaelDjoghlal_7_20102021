@@ -18,7 +18,8 @@ exports.register = async (req, res, next) => {
         }
 
         const user = { 
-            email: req.body.email
+            email: req.body.email,
+            password: req.body.password
         }
 
         //Vérification dans la table si l'email est présent
@@ -41,7 +42,7 @@ exports.register = async (req, res, next) => {
 
         //Réponse du serveur
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-        .catch(error => res.status(500).json({ message: error.message }));
+        .catch(error => res.status(500).json({ message: 'Erreur dans l\'inscription !' }));
 
     } catch(error) {
         res.status(500).json({ message: error.message })
