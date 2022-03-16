@@ -2,6 +2,7 @@
     <div class="auth-container">
         <div class="connect-group">
         <h1>Identification</h1>
+            <div v-bind:class="validStatus">{{ validReturn }}</div>
             <div class="connect-member">
                 <form ref="form" @submit.prevent="submitLogin">
                   <div class="form-group">
@@ -61,6 +62,11 @@ export default {
       user: {
         email: undefined,
         password: undefined
+      },
+      validReturn: '',
+      validStatus: {
+        valide: true,
+        error: false
       }
     }
   },
@@ -79,13 +85,27 @@ export default {
     submitLogin () {
       axios.post('http://localhost:3000/api/user/login', this.user)
         .then((response) => {
-          if (response) {
-            console.log('Identifiants correct !!!')
-          }
+          console.log('Identifiant correct !!!')
+          this.validReturn = 'Connexion en cours...'
+
+          // On récupère le token & l'ID de connexion et on l'enregistre dans le localStorage
+          console.log(response.data.userToken)
+          localStorage.setItem('token', response.data.userToken)
+          localStorage.setItem('idUser', response.data.userId)
+
+          window.setTimeout(function () {
+            location.href = 'http://localhost:8080/home'
+          }, 3000)
         })
 
-        .catch(function (error) {
-          console.log(error.response)
+        .catch(() => {
+          console.log('Identifiant incorrect !!!')
+          this.validReturn = 'Erreur identiant, veuillez réssayer...'
+          this.validStatus.valide = false
+          this.validStatus.error = true
+          window.setTimeout(function () {
+            location.href = 'http://localhost:8080/'
+          }, 3000)
         })
     }
   }
