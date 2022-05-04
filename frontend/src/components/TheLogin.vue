@@ -92,7 +92,6 @@ export default {
           console.log(response.data.userToken)
           localStorage.setItem('token', response.data.userToken)
           localStorage.setItem('idUser', response.data.userId)
-
           window.setTimeout(function () {
             location.href = 'http://localhost:8080/home'
           }, 3000)
