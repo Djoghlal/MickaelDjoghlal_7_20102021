@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
+    path: '/connect',
+    alias: '/',
     name: 'Connect',
     component: () => import('../views/Connect.vue'),
     meta: { requiresAuth: false }
@@ -33,13 +34,18 @@ const router = createRouter({
 })
 
 // Vérification du token présent ou non dans le localStorage
-router.beforeEach(async (to, next) => {
-  if (to.meta.requiresAuth === true && localStorage.getItem('token')) {
+router.beforeEach(async (to, from, next) => {
+  const token = localStorage.getItem('token')
+  console.log(to)
+  if (to.meta.requiresAuth === true && token !== null) {
+    // console.log('Le token est ok')
     // Le token existe donc on est ok
-    localStorage.setItem('token', localStorage.getItem('token'))
+    next()
+  } else if (to.path !== '/register' /* || to.name !== 'Register' */) {
+    // console.log("Le token n'est pas correct")
+    next('/register')
   } else {
-    console.log("Le token n'est pas correct")
-    // location.href = 'http://localhost:8080/'
+    next()
   }
 })
 
